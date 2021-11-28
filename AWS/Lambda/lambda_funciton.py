@@ -6,6 +6,7 @@ from datetime import datetime
 import my_config
 import my_func # my functions for bot to perform
 from ChatRequest import ChatRequest # request from chat
+import random
 # import bot # NOT IN USE at AWS lambda
 
 
@@ -116,6 +117,16 @@ def lambda_handler(event, context):
         
     elif input_text == "/ping":
         bot.send_message(chat_id, "PONG!")
+        
+    elif input_text == "/toss":
+        coin = {
+            0 : "https://i.imgur.com/UTTGe94.png", 
+            1 : 'https://i.imgur.com/bBt0cBp.jpg'
+        }
+        # 0: just do it; # 1: no just don't
+        index = random.randint(0, 1)
+        msg = coin[index]
+        bot.send_message(chat_id, msg)
         
     elif input_text == "/touch":
         bot.send_message(chat_id, "*Giggle*")
