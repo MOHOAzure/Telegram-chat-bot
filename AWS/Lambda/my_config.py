@@ -25,7 +25,8 @@ BOT_COMMANDS = {
     '/time'     : 'Tell current time',
     '/GM'       : 'Good morning',
     '/GN'       : 'Good night',
-    '/touch'    : 'Show your love'
+    '/touch'    : 'Show your love',
+    '/toss'     : 'Help you make decision'
 }
 
 # bot log
