@@ -12,9 +12,12 @@ Chat bot on TG. Implemented with AWS serverless tech, Lambda, API gateway, Dynam
 # Dev
 * A Telegram account + bot token key
   * See: https://github.com/MOHOAzure/Telegram-chat-bot-/blob/main/official-bot-father
-* AWS Lambda (Python) + API gateway
-  * See: https://github.com/MOHOAzure/Telegram-chat-bot-/tree/main/scripts/AWS-Lambda
+  
+* DDB
+  * See: https://github.com/MOHOAzure/Telegram-chat-bot-/tree/main/AWS/DDB
+   
+* AWS Lambda (Python)
+  * See: https://github.com/MOHOAzure/Telegram-chat-bot-/tree/main/AWS/Lambda
+
 * API Gateway
-  * Add a API trigger to developed Lambda
-  * Leave everthing as default settings is OK
-  * Webhook URL of API Gateway to TG
+  * See: https://github.com/MOHOAzure/Telegram-chat-bot-/tree/main/AWS/API-Gateway
