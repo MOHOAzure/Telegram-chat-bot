@@ -3,14 +3,17 @@
 ## Dependency
 * OSS: [pyTelegramBotAPI](https://github.com/eternnoir/pyTelegramBotAPI)
 ### Layer
-* (tricky) Build lib, zip the lib, and then put dependency to layer
+* To use 3rd-party lib in lambda, you need to Build lib in Amazon machine env, Zip the lib with the env, and then put zipped files to Lambda as a layer
+  * [AWS official description](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+  * [Practice steps shown on this StackOverflow post](https://stackoverflow.com/questions/57688731/unable-to-import-module-lambda-function-no-module-named-pandas)
 * In short 
   * create a dir, named 'python', for building lib and go inside
-  * use virtual env and then you can easily find the installed lib in the following step and this step make your working env clean
+  * active virtual env
   * install lib
-  * zip the whole dir
-  * use aws to put it to Lambda layer
-    * `aws lambda publish-layer-version --layer-name telebot --zip-file fileb://telebot_layer.zip --compatible-runtimes python3.7`
+  * zip the whole dir, the virtual env 'should' be included
+  * put it to Lambda layer (with aws CLI)
+    * `aws lambda publish-layer-version --layer-name telebot --zip-file fileb://telebot_layer.zip`
+
 
 ## Environment variables
 * TELEGRAM_TOKEN
