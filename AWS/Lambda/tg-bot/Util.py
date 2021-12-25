@@ -17,6 +17,7 @@ class Util:
     def __str__(self):
         pass
     
+    
     # remove prefix of input text to get cmd string
     def remove_prefix(self, text, prefix='/'):
         if text.startswith(prefix):
@@ -95,6 +96,7 @@ class Util:
             }
         )
 
+
     # Start game server (EC2)
     def start_game_server(self):
         try:
@@ -103,17 +105,37 @@ class Util:
                 return r.text
             else:
                 print(f'Unexpected status from game server : {r.status}')
+                return "Something wrong with game server"
         except Exception as e:
             print(e)
+            return "Something wrong"
 
 
-    # TODO: get a meme from internet
     def get_meme_pic(self):
         try:
-            file_data = 'https://i.imgur.com/IUzlrAc.jpeg'
-            return file_data
+            meme_data = ""
+            r = requests.get('https://api.imgflip.com/get_memes')
+            # when meme api goes wrong, provide a default meme
+            if r.status_code != requests.codes.ok:
+                print(f'Unexpected status from meme API : {r.status}')
+                meme_data = 'https://i.imgur.com/IUzlrAc.jpeg'
+                return meme_data
+                
+            # resolve meme from API response, and randomly get a meme from it
+            # ref: https://api.imgflip.com/get_memes
+            api_response = json.loads(r.text)
+            if not api_response['success']:
+                print(f'Unexpected status from meme API : {r.status}')
+                meme_data = 'https://i.imgur.com/IUzlrAc.jpeg'
+                return meme_data
+                
+            meme_arr = api_response['data']['memes']
+            index = random.randint(0, len(meme_arr))
+            meme_data = meme_arr[index]['url']
+            return meme_data
         except Exception as e:
             print(e)
+            return "Something wrong"
 
 
     def get_help_text(self):
