@@ -21,3 +21,6 @@ Chat bot on TG. Implemented with AWS serverless tech, Lambda, API gateway, Dynam
 
 * API Gateway
   * See: https://github.com/MOHOAzure/Telegram-chat-bot-/tree/main/AWS/API-Gateway
+
+# Demo
+![](https://github.com/MOHOAzure/Telegram-chat-bot/blob/main/TG%20bot.png)
